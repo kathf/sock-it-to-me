@@ -1,0 +1,12 @@
+Sock It To Me
+-------------------------------
+
+Sock replacement app - for all those times you when end up with only half a pair!
+
+User stories:
+- upload an image of a sock user wants
+- make credit card payment to purchase sock, as either a registered user or an anonymous user
+- get confirmation message that payment was accepted
+- anonymous user to register
+- anonymous user to sign in to become registered user
+- registered user to view all previously uploaded socks
