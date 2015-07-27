@@ -2,29 +2,26 @@
   <div class="col-sm-6">
     <div class="height-600">
       <p>
-        Don't you hate it when just one sock goes missing... what are you supposed to do with the last sock standing?
+        Don't you hate it when just one sock goes missing...Ugh, it totally socks! What are you supposed to do with the last sock standing?
       </p>
       <p>
         We can help.
       </p>
       <p>
-        Upload an image of your remaining sock, chuck in any extra specifications and we'll send you a matching sock buddy asap!
+        Upload an image of your remaining sock, chuck in any extra specifications and we'll send you a matching sock buddy asap! No promises that they will make a good pair.
       </p>
     </div>
   </div>
 
   <div class="col-sm-6">
     <div class="height-600">
-      <h1 class="text-center"> Put a SOCK in it</h1>
-      <div class="sock-upload-image center-block">
-        <%= link_to "/", id: "sock-upload-image" do %>
-          <% if @sock.avatar? %>
-            <%= image_tag(@sock.avatar_url) %>
-          <% else %>
-            <span class="glyphicon glyphicon-download-alt"> </span>
-          <% end %>
-        <% end %>
-      </div>
+      <h2 class="text-center"> click here to upload your sock</h2>
+      <%= link_to "/", id: "sock-upload-image" do %>
+        <div class="image-container">
+          <%= image_tag "photo-icon.png", id: "polaroid-image" %>
+          <%= image_tag "icon.png", size: "150", id: "sock-image" %>
+        </div>
+      <% end %>
 
       <div class="sock-upload-form center-block">
         <%= simple_form_for @sock, html: { multipart: true } do |f| %>

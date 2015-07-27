@@ -4,7 +4,7 @@
 
 .height-600 {
   height: 600px;
-  margin: 80px 50px;
+  margin: 80px 10px;
 }
 
 
@@ -15,7 +15,6 @@
   span {
     font-size: 100px;
   }
-
 }
 
 .sock-upload-form .btn {
@@ -24,4 +23,23 @@
 
 p {
   padding: 10px;
+}
+
+.image-container {
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+
+  img {
+    position: absolute;
+    margin: 0 auto;
+  }
+  #polaroid-image {
+    left: 150px;
+    top: 160px;
+  }
+  #sock-image {
+    left: 180px;
+    top: 230px;
+  }
 }
