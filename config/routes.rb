@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :socks
   devise_for :users
 
-  root 'socks#index'
+  root 'socks#new'
 
   resources :socks
 

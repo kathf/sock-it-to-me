@@ -1,4 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="height-600">
+      <%= image_tag(@sock.avatar_url, class: "img-thumbnail") if @sock.avatar? %>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_sock_path(@sock) %> |
-<%= link_to 'Back', socks_path %>
+  <div class="col-sm-6">
+    <div class="height-600">
+      <h2> Extra specifications </h2>
+      <div class="sock-details-form">
+        <%= simple_form_for @sock do |f| %>
+          <%= f.input :material %>
+          <%= f.input :height_cm %>
+          <%= f.input :size %>
+          <%= f.input :fingertoes %>
+          <%= f.input :heel_padding %>
+          <%= f.input :comments, label: "Additional comments" %>
+          <%= f.button :submit, "sock it to me" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

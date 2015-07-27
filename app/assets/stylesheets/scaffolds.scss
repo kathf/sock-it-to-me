@@ -1,15 +1,18 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-family: 'Chivo', arial, helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+h1 {
+  font-weight: 900;
+  font-size: 80px;
+}
+
+.nav {
+  margin: 0 20px;
 }
 
 pre {

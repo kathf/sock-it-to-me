@@ -14,3 +14,11 @@
  *= require_tree .
  *= require_self
  */
+
+.main {
+  margin-top: 50px;
+}
+
+.flash-container {
+  margin: 50px;
+}

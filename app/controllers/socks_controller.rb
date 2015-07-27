@@ -1,11 +1,9 @@
 class SocksController < ApplicationController
   before_action :set_sock, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_member!, only: [:index]
 
   def index
-    @socks = Sock.all
-  end
-
-  def show
+    @socks = curent_user.socks
   end
 
   def new
@@ -15,12 +13,15 @@ class SocksController < ApplicationController
   def edit
   end
 
+  def show
+  end
+
   def create
     @sock = Sock.new(sock_params)
 
     respond_to do |format|
       if @sock.save
-        format.html { redirect_to @sock, notice: 'Sock was successfully created.' }
+        format.html { redirect_to @sock }
         format.json { render :show, status: :created, location: @sock }
       else
         format.html { render :new }
@@ -32,7 +33,7 @@ class SocksController < ApplicationController
   def update
     respond_to do |format|
       if @sock.update(sock_params)
-        format.html { redirect_to @sock, notice: 'Sock was successfully updated.' }
+        format.html { redirect_to @sock }
         format.json { render :show, status: :ok, location: @sock }
       else
         format.html { render :edit }
@@ -57,6 +58,14 @@ class SocksController < ApplicationController
 
 
     def sock_params
-      params[:sock]
+      params.require(:sock).permit(
+        :material,
+        :height_cm,
+        :size,
+        :fingertoes,
+        :heel_padding,
+        :comments,
+        :avatar
+        )
     end
 end

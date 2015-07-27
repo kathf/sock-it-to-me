@@ -1,5 +1,38 @@
-<h1>New Sock</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="height-600">
+      <p>
+        Don't you hate it when just one sock goes missing... what are you supposed to do with the last sock standing?
+      </p>
+      <p>
+        We can help.
+      </p>
+      <p>
+        Upload an image of your remaining sock, chuck in any extra specifications and we'll send you a matching sock buddy asap!
+      </p>
+    </div>
+  </div>
 
-<%= render 'form' %>
+  <div class="col-sm-6">
+    <div class="height-600">
+      <h1 class="text-center"> Put a SOCK in it</h1>
+      <div class="sock-upload-image center-block">
+        <%= link_to "/", id: "sock-upload-image" do %>
+          <% if @sock.avatar? %>
+            <%= image_tag(@sock.avatar_url) %>
+          <% else %>
+            <span class="glyphicon glyphicon-download-alt"> </span>
+          <% end %>
+        <% end %>
+      </div>
 
-<%= link_to 'Back', socks_path %>
+      <div class="sock-upload-form center-block">
+        <%= simple_form_for @sock, html: { multipart: true } do |f| %>
+          <%= f.file_field :avatar, class: "hidden" %>
+          <%= f.hidden_field :avatar_cache %>
+          <%= f.button :submit, class: "hidden" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

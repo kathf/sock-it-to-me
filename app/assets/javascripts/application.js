@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+
+$(window).load(function () {
+  $( "#sock-upload-image" ).click(function( event ) {
+    event.preventDefault();
+    $( "#sock_avatar" ).click();
+    $( "#sock_avatar" ).change(function() {
+      console.log("selected");
+      $( "#new_sock" ).submit();
+    });
+  });
+})
