@@ -14,19 +14,15 @@ class SocksController < ApplicationController
   end
 
   def show
+    @sock
   end
 
   def create
     @sock = Sock.new(sock_params)
-
-    respond_to do |format|
-      if @sock.save
-        format.html { redirect_to @sock }
-        format.json { render :show, status: :created, location: @sock }
-      else
-        format.html { render :new }
-        format.json { render json: @sock.errors, status: :unprocessable_entity }
-      end
+    if @sock.save
+      redirect_to @sock
+    else
+      render :new
     end
   end
 
@@ -65,6 +61,7 @@ class SocksController < ApplicationController
         :fingertoes,
         :heel_padding,
         :comments,
+        :avatar_cache,
         :avatar
         )
     end

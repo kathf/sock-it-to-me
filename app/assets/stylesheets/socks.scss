@@ -2,32 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.height-600 {
-  height: 600px;
-  margin: 80px 10px;
+.height-400 {
+  height: 400px;
+  margin: 30px 10px;
 }
 
+a {
+  color: #000;
+}
 
-.sock-upload-image {
+#sock-upload-image {
   height: 100px;
   width: 100px;
 
-  span {
-    font-size: 100px;
+  &:visited {
+    text-decoration: none;
+    color: #000;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: #000;
+
+    .bordered {
+      border: 1px solid black;
+      margin: 0;
+    }
   }
 }
 
-.sock-upload-form .btn {
-  margin: 20px auto;
-}
-
-p {
-  padding: 10px;
+.sock-details-form {
+  .btn {
+    margin: 20px auto;
+  }
+  a {
+    text-decoration: underline;
+  }
 }
 
 .image-container {
-  height: 400px;
-  width: 400px;
+  height: 320px;
+  width: 320px;
   margin: 0 auto;
 
   img {
@@ -36,10 +51,35 @@ p {
   }
   #polaroid-image {
     left: 150px;
-    top: 160px;
+    top: 60px;
   }
   #sock-image {
     left: 180px;
-    top: 230px;
+    top: 130px;
   }
+}
+
+.img-thumbnail {
+  margin-top: 80px;
+}
+
+.text-container {
+  padding: 50px 0;
+
+  p {
+    margin-top: 20px;
+  }
+}
+
+.btn {
+  color: #FFF;
+  background-color: #000;
+  height: 50px;
+  margin-top: 15px;
+}
+
+#big-toe-image, #all-toe-image {
+  position: absolute;
+  left: 250px;
+  bottom: 200px;
 }

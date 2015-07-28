@@ -1,32 +1,29 @@
 <div class="row">
   <div class="col-sm-6">
-    <div class="height-600">
-      <p>
-        Don't you hate it when just one sock goes missing...Ugh, it totally socks! What are you supposed to do with the last sock standing?
-      </p>
-      <p>
-        We can help.
-      </p>
-      <p>
-        Upload an image of your remaining sock, chuck in any extra specifications and we'll send you a matching sock buddy asap! No promises that they will make a good pair.
-      </p>
+    <div class="height-400">
+      <div class="text-container">
+        <p> Don't you hate it when just one sock goes missing... What are you supposed to do with the last sock standing? </p> </br>
+        <p> We can help. </p></br>
+        <p> Upload an image of your remaining sock, chuck in any extra specifications and we'll send you a matching sock buddy asap! No promises that they will make a good pair. </p>
+      </div>
     </div>
   </div>
 
   <div class="col-sm-6">
-    <div class="height-600">
-      <h2 class="text-center"> click here to upload your sock</h2>
+    <div class="height-400">
       <%= link_to "/", id: "sock-upload-image" do %>
-        <div class="image-container">
-          <%= image_tag "photo-icon.png", id: "polaroid-image" %>
-          <%= image_tag "icon.png", size: "150", id: "sock-image" %>
+        <div class="bordered">
+          <div class="image-container">
+            <%= image_tag "photo-icon.png", id: "polaroid-image" %>
+            <%= image_tag "icon.png", size: "150", id: "sock-image" %>
+          </div>
+          <h2 class="text-center"> click here to upload your sock image</h2>
         </div>
       <% end %>
 
-      <div class="sock-upload-form center-block">
+      <div class="sock-upload-form">
         <%= simple_form_for @sock, html: { multipart: true } do |f| %>
           <%= f.file_field :avatar, class: "hidden" %>
-          <%= f.hidden_field :avatar_cache %>
           <%= f.button :submit, class: "hidden" %>
         <% end %>
       </div>

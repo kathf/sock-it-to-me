@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'draper', '~> 1.3'
 gem 'stripe', '~> 1.23.0'
 gem 'carrierwave'
 gem 'rails_12factor', group: :production

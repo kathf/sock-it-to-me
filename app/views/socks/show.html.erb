@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="height-600">
-      <%= image_tag(@sock.avatar_url, class: "img-thumbnail") if @sock.avatar? %>
+      <%= image_tag(@sock.avatar_url, class: "img-thumbnail center-block") if @sock.avatar? %>
     </div>
   </div>
 
@@ -10,13 +10,25 @@
       <h2> Extra specifications </h2>
       <div class="sock-details-form">
         <%= simple_form_for @sock do |f| %>
-          <%= f.input :material %>
-          <%= f.input :height_cm %>
-          <%= f.input :size %>
-          <%= f.input :fingertoes %>
-          <%= f.input :heel_padding %>
+          <%= f.input :fabric, collection: fabric_collection %>
+          <%= f.input :height, label: "Sock height", collection: height_collection %>
+          <%= f.input :size, label: "Sock size", collection: size_collection %>
+          <div class="form-group">
+            <%= link_to "Toe separation?", "/", id: "toe-separator", class: "control-label" %> </br>
+            <%= f.input :toes_separator, label: "all-toe separator", wrapper_html: {class: "hidden"} %>
+
+            <%= image_tag "toe-separator.jpg", id: "all-toe-image", class: "img-rounded hidden", size: "150" %>
+
+            <%= f.input :big_toe_separator, label: "big-toe separator", wrapper_html: {class: "hidden"} %>
+            <%= image_tag "big-toe-separator.jpg", id: "big-toe-image", class: "img-rounded hidden", size: "150" %>
+
+          </div>
+          <div class="form-group">
+            <%= link_to "Heel padding?", "/", id: "heel-padding", class: "control-label"  %>
+            <%= f.input :heel_padding, wrapper_html: {class: "hidden"} %>
+          </div>
           <%= f.input :comments, label: "Additional comments" %>
-          <%= f.button :submit, "sock it to me" %>
+          <%= f.button :submit, "sock it to me", class: "btn-lg form-control" %>
         <% end %>
       </div>
     </div>

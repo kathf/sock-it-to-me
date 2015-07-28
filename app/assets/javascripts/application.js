@@ -17,7 +17,6 @@
 
 
 
-
 $(window).load(function () {
   $( "#sock-upload-image" ).click(function( event ) {
     event.preventDefault();
@@ -26,5 +25,24 @@ $(window).load(function () {
       console.log("selected");
       $( "#new_sock" ).submit();
     });
+  });
+
+  $( "#toe-separator" ).click(function( event ) {
+    event.preventDefault();
+    $( ".sock_toes_separator").toggleClass("hidden");
+    $( ".sock_big_toe_separator").toggleClass("hidden");
+  })
+
+  $( "#heel-padding" ).click(function( event ) {
+    event.preventDefault();
+    $( ".sock_heel_padding").toggleClass("hidden");
+  })
+
+  $( ".sock_toes_separator" ).hover(function() {
+    $( "#all-toe-image").toggleClass("hidden");
+  });
+
+  $( ".sock_big_toe_separator" ).hover(function() {
+    $( "#big-toe-image").toggleClass("hidden");
   });
 })

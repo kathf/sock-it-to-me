@@ -28,26 +28,16 @@ ActiveRecord::Schema.define(version: 20150727035315) do
   end
 
   create_table "socks", force: :cascade do |t|
-    t.string   "material"
-    t.decimal  "height_cm",    precision: 4, scale: 2
+    t.string   "fabric"
+    t.string   "height"
     t.integer  "size"
-    t.boolean  "fingertoes"
+    t.boolean  "toes_separator"
+    t.boolean  "big_toe_separator"
     t.boolean  "heel_padding"
     t.text     "comments"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "avatar"
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.integer  "sock_id"
-    t.integer  "user_id"
-    t.boolean  "paid"
-    t.boolean  "delivered"
-    t.boolean  "disputed"
-    t.boolean  "closed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
