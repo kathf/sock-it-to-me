@@ -3,7 +3,7 @@ class CreateSocks < ActiveRecord::Migration
     create_table :socks do |t|
       t.string :fabric
       t.string :height
-      t.integer :size
+      t.string :size
       t.boolean :toes_separator
       t.boolean :big_toe_separator
       t.boolean :heel_padding

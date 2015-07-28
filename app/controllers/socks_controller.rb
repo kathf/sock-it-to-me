@@ -14,27 +14,22 @@ class SocksController < ApplicationController
   end
 
   def show
-    @sock
   end
 
   def create
     @sock = Sock.new(sock_params)
     if @sock.save
-      redirect_to @sock
+      redirect_to edit_sock_path(@sock)
     else
       render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @sock.update(sock_params)
-        format.html { redirect_to @sock }
-        format.json { render :show, status: :ok, location: @sock }
-      else
-        format.html { render :edit }
-        format.json { render json: @sock.errors, status: :unprocessable_entity }
-      end
+    if @sock.update(sock_params)
+      redirect_to @sock
+    else
+      render :edit
     end
   end
 
@@ -55,10 +50,11 @@ class SocksController < ApplicationController
 
     def sock_params
       params.require(:sock).permit(
-        :material,
-        :height_cm,
+        :fabric,
+        :height,
         :size,
-        :fingertoes,
+        :toes_separator,
+        :big_toe_separator,
         :heel_padding,
         :comments,
         :avatar_cache,

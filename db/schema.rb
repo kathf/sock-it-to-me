@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150727035315) do
   create_table "socks", force: :cascade do |t|
     t.string   "fabric"
     t.string   "height"
-    t.integer  "size"
+    t.string   "size"
     t.boolean  "toes_separator"
     t.boolean  "big_toe_separator"
     t.boolean  "heel_padding"

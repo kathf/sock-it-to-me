@@ -1,35 +1,26 @@
 <div class="row">
   <div class="col-sm-6">
-    <div class="height-600">
-      <%= image_tag(@sock.avatar_url, class: "img-thumbnail center-block") if @sock.avatar? %>
+    <div class="height-400">
+      <%= image_tag(@sock.avatar_url, class: "img-thumbnail pull-right smaller-img") if @sock.avatar? %>
+      <h2> Your order </h2>
+      <p> <b> Fabric: </b> <%= @sock.fabric %></p>
+      <p> <b> Height: </b><%= @sock.height %></p>
+      <p> <b> Size: </b><%= @sock.size %></p>
+      <p> <%= "All-toe separation" if @sock.toes_separator %></p>
+      <p> <%= "Big-toe separation" if @sock.big_toe_separator %></p>
+      <p> <%= "Padded heel" if @sock.heel_padding %></p>
+      <% if @sock.comments %>
+        <p> <b> Additional comments: </b> <%=  @sock.comments %></p> 
+      <% end %>
     </div>
   </div>
 
   <div class="col-sm-6">
-    <div class="height-600">
-      <h2> Extra specifications </h2>
-      <div class="sock-details-form">
-        <%= simple_form_for @sock do |f| %>
-          <%= f.input :fabric, collection: fabric_collection %>
-          <%= f.input :height, label: "Sock height", collection: height_collection %>
-          <%= f.input :size, label: "Sock size", collection: size_collection %>
-          <div class="form-group">
-            <%= link_to "Toe separation?", "/", id: "toe-separator", class: "control-label" %> </br>
-            <%= f.input :toes_separator, label: "all-toe separator", wrapper_html: {class: "hidden"} %>
-
-            <%= image_tag "toe-separator.jpg", id: "all-toe-image", class: "img-rounded hidden", size: "150" %>
-
-            <%= f.input :big_toe_separator, label: "big-toe separator", wrapper_html: {class: "hidden"} %>
-            <%= image_tag "big-toe-separator.jpg", id: "big-toe-image", class: "img-rounded hidden", size: "150" %>
-
-          </div>
-          <div class="form-group">
-            <%= link_to "Heel padding?", "/", id: "heel-padding", class: "control-label"  %>
-            <%= f.input :heel_padding, wrapper_html: {class: "hidden"} %>
-          </div>
-          <%= f.input :comments, label: "Additional comments" %>
-          <%= f.button :submit, "sock it to me", class: "btn-lg form-control" %>
-        <% end %>
+    <div class="height-400">
+      <div class="register-or-not">
+        <%= button_tag "Register to complete your sock order", class: "btn btn-default center-block"  %>
+        </br>
+        <%= button_tag "Check out without registering", class: "btn btn-default center-block"  %>
       </div>
     </div>
   </div>

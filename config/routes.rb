@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :socks
   devise_for :users
 
   root 'socks#new'

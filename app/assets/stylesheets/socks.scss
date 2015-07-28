@@ -11,6 +11,10 @@ a {
   color: #000;
 }
 
+h2 {
+  margin-bottom: 40px;
+}
+
 #sock-upload-image {
   height: 100px;
   width: 100px;
@@ -59,8 +63,12 @@ a {
   }
 }
 
-.img-thumbnail {
+.bigger-img {
   margin-top: 80px;
+}
+
+.smaller-img {
+  height: 150px;
 }
 
 .text-container {
@@ -82,4 +90,13 @@ a {
   position: absolute;
   left: 250px;
   bottom: 200px;
+}
+
+.register-or-not {
+  button {
+    width: 350px;
+    height: 200px;
+    border-radius: 20px;
+    font-size: 20px;
+  }
 }
