@@ -10,3 +10,5 @@ User stories:
 - anonymous user to register
 - anonymous user to sign in to become registered user
 - registered user to view all previously uploaded socks
+
+Deployed on heroku: https://ancient-savannah-3859.herokuapp.com/ (redeployed intermitently)

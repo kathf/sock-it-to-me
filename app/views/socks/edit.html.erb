@@ -10,9 +10,9 @@
       <h2> Extra specifications </h2>
       <div class="sock-details-form">
         <%= simple_form_for @sock do |f| %>
-          <%= f.input :fabric, collection: fabric_collection %>
-          <%= f.input :height, label: "Sock height", collection: height_collection %>
-          <%= f.input :size, label: "Sock size", collection: size_collection %>
+          <%= f.input :fabric, collection: fabric_collection, selected: fabric_collection[0] %>
+          <%= f.input :height, label: "Sock height", collection: height_collection, selected: height_collection[0] %>
+          <%= f.input :size, label: "Sock size", collection: size_collection, selected: size_collection[0] %>
           <div class="form-group">
             <%= link_to "Toe separation?", "/", id: "toe-separator", class: "control-label" %> </br>
             <%= f.input :toes_separator, label: "all-toe separator", wrapper_html: {class: "hidden"} %>

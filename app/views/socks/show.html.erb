@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="height-400">
-      <%= image_tag(@sock.avatar_url, class: "img-thumbnail pull-right smaller-img") if @sock.avatar? %>
       <h2> Your order </h2>
       <p> <b> Fabric: </b> <%= @sock.fabric %></p>
       <p> <b> Height: </b><%= @sock.height %></p>
@@ -9,16 +8,17 @@
       <p> <%= "All-toe separation" if @sock.toes_separator %></p>
       <p> <%= "Big-toe separation" if @sock.big_toe_separator %></p>
       <p> <%= "Padded heel" if @sock.heel_padding %></p>
-      <% if @sock.comments %>
-        <p> <b> Additional comments: </b> <%=  @sock.comments %></p> 
+      <% if !(@sock.comments == "") %> 
+        <p> <b> Additional comments: </b> <%= @sock.comments %> </p>
       <% end %>
+      <%= image_tag(@sock.avatar_url, class: "img-thumbnail smaller-img") if @sock.avatar? %>
     </div>
   </div>
 
   <div class="col-sm-6">
     <div class="height-400">
       <div class="register-or-not">
-        <%= button_tag "Register to complete your sock order", class: "btn btn-default center-block"  %>
+        <%= button_tag "Register to save and complete your sock order", class: "btn btn-default center-block"  %>
         </br>
         <%= button_tag "Check out without registering", class: "btn btn-default center-block"  %>
       </div>

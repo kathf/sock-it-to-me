@@ -45,4 +45,15 @@ $(window).load(function () {
   $( ".sock_big_toe_separator" ).hover(function() {
     $( "#big-toe-image").toggleClass("hidden");
   });
+
+  $('#log-in').on("ajax:success", function(e, data, status, xhr) {
+    $('#log-in-form').html(xhr.responseText);
+    $('.nav-links').addClass("hidden");
+  });
+
+  $('#sign-up').on("ajax:success", function(e, data, status, xhr) {
+    $('#log-in-form').html(xhr.responseText);
+    $('.nav-links').addClass("hidden");
+  });
+
 })

@@ -69,6 +69,7 @@ h2 {
 
 .smaller-img {
   height: 150px;
+  margin-top: 30px;
 }
 
 .text-container {
@@ -98,5 +99,19 @@ h2 {
     height: 200px;
     border-radius: 20px;
     font-size: 20px;
+    white-space: initial;
+  }
+}
+
+#log-in-form {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  input {
+    text-align: center;
+  }
+  .log-in-btn {
+    width: 60px;
   }
 }
