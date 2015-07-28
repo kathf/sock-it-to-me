@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root 'socks#new'
 
-  resources :socks
+  resources :socks do
+    get 'work_in_progress', on: :member
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

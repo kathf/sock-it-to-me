@@ -94,12 +94,13 @@ h2 {
 }
 
 .register-or-not {
-  button {
+  a {
     width: 350px;
     height: 200px;
     border-radius: 20px;
     font-size: 20px;
     white-space: initial;
+    vertical-align: middle;
   }
 }
 
