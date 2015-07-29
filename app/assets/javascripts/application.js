@@ -18,6 +18,12 @@
 
 
 $(window).load(function () {
+  $(function() {
+     $('.flash-container').delay(500).fadeIn('normal', function() {
+        $(this).delay(1500).fadeOut();
+     });
+  });
+
   $( "#sock-upload-image" ).click(function( event ) {
     event.preventDefault();
     $( "#sock_avatar" ).click();

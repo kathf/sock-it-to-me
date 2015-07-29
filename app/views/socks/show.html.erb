@@ -17,11 +17,17 @@
 
   <div class="col-sm-6">
     <div class="height-400">
-      <div class="register-or-not">
-        <%= link_to "Register to save and complete your sock order", work_in_progress_sock_path, class: "btn btn-default center-block"  %>
-        </br>
-        <%= link_to "Check out without registering", work_in_progress_sock_path, class: "btn btn-default center-block"  %>
-      </div>
+      <% if user_signed_in? %>
+        <p>
+          show payment form
+        </p>
+      <% else %>
+        <div class="register-or-not">
+          <%= link_to "Register to save and complete your sock order", work_in_progress_sock_path, class: "btn btn-default center-block"  %>
+          </br>
+          <%= link_to "Check out without registering", work_in_progress_sock_path, class: "btn btn-default center-block"  %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

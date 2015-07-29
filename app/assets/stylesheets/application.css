@@ -16,9 +16,16 @@
  */
 
 .main {
-  margin-top: 77px;
+  margin-top: 0;
 }
 
-.flash-container {
-  margin: 77px;
+.flash-container, .alert  {
+  display: inline-block;
+  position: fixed;
+  right: 0;
+  margin: 0;
+}
+
+.navbar {
+  margin: 0;
 }

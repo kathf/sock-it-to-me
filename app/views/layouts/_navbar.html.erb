@@ -12,10 +12,11 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav nav-links navbar-right">
-        <% if user_signed_in? %>
+        <% if action_name == "edit" && devise_controller? %>
+        <% elsif user_signed_in? %>
           <li><%= link_to current_user.email, edit_user_registration_path %></li>
           <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
+        <% elsif resource.errors.empty? %>
           <li> <%= link_to "Log in", new_user_session_path, remote: true, id: "log-in"  %></li>
           <li> <%= link_to "Sign up", new_user_registration_path, remote: true, id: "sign-up"  %></li>
         <% end %>

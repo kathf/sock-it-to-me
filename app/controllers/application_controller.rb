@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   private
 
   def layout
-    false if devise_controller?
+    if devise_controller? && resource.errors.empty?
+      false
+    elsif devise_controller?
+      "application"
+    end
   end
 
   # def authenticate_user!(*args)
