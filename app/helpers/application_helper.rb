@@ -10,5 +10,12 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
-  
+
+  def navbar_login?
+    devise_controller? && (resource.email == "")
+  end
+
+  def navbar_rego?
+    devise_controller? && resource.errors.empty?
+  end
 end

@@ -5,6 +5,7 @@ gem 'stripe', '~> 1.23.0'
 gem 'carrierwave'
 gem 'rails_12factor', group: :production
 gem 'simple_form'
+gem 'autoprefixer-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
@@ -14,6 +15,7 @@ end
 gem 'rails', '4.2.1'
 
 gem 'devise'
+gem 'devise-bootstrap-views'
 
 gem 'pg'
 # Use SCSS for stylesheets

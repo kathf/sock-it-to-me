@@ -2,6 +2,7 @@
   <div class="container flash-container">
       <div class="alert alert-<%= key %>">
           <%= value %>
+          <%= devise_error_messages! %>
       </div>
   </div>
 <% end %>

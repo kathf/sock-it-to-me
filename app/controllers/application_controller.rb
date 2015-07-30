@@ -5,29 +5,56 @@ class ApplicationController < ActionController::Base
 
   layout :layout
 
+  # if user is logged in, return current_user, else return guest_user
+  def current_or_guest_user
+    if current_user
+      if session[:guest_user_id] && session[:guest_user_id] != current_user.id
+        logging_in
+        guest_user(with_retry = false).try(:destroy)
+        session[:guest_user_id] = nil
+      end
+      current_user
+    else
+      guest_user
+    end
+  end
+
+  # find guest_user object associated with the current session,
+  # creating one as needed
+  def guest_user(with_retry = true)
+    # Cache the value the first time it's gotten.
+    @cached_guest_user ||= User.find(session[:guest_user_id] ||= create_guest_user.id)
+
+  rescue ActiveRecord::RecordNotFound # if session[:guest_user_id] invalid
+     session[:guest_user_id] = nil
+     guest_user if with_retry
+  end
+
   private
 
+  # called (once) when the user logs in, insert any code your application needs
+  # to hand off from guest_user to current_user.
+  def logging_in
+    guest_socks = guest_user.socks
+    guest_socks.each do |sock|
+      sock.user_id = current_user.id
+      sock.save!
+    end
+  end
+
+  def create_guest_user
+    u = User.create(email: "guest_#{Time.now.to_i}#{rand(100)}@example.com")
+    u.save!(validate: false)
+    session[:guest_user_id] = u.id
+    u
+  end
+
   def layout
-    if devise_controller? && resource.errors.empty?
+    if devise_controller? && (resource.email == "")
       false
     elsif devise_controller?
       "application"
     end
   end
-
-  # def authenticate_user!(*args)
-  #   current_user.present? || super(*args)
-  # end
-  #
-  # def current_user
-  #   super || AnonymousUser.find_or_initialize_by_token(anonymous_user_token).tap do |user|
-  #     user.save(validate: false) if user.new_record?
-  #   end
-  # end
-  #
-  # private
-  # def anonymous_user_token
-  #   session[:user_token] ||= SecureRandom.hex(8)
-  # end
 
 end

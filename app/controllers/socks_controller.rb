@@ -1,13 +1,14 @@
 class SocksController < ApplicationController
   before_action :set_sock, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_member!, only: [:index]
+  before_action :authenticate_user!, only: [:index]
 
   def index
     @socks = curent_user.socks
   end
 
   def new
-    @sock = Sock.new
+    @user = current_or_guest_user
+    @sock = @user.socks.new
   end
 
   def edit
@@ -17,7 +18,7 @@ class SocksController < ApplicationController
   end
 
   def create
-    @sock = Sock.new(sock_params)
+    @sock = Sock.create!(sock_params)
     if @sock.save
       redirect_to edit_sock_path(@sock)
     else
@@ -46,7 +47,6 @@ class SocksController < ApplicationController
     def set_sock
       @sock = Sock.find(params[:id])
     end
-
 
     def sock_params
       params.require(:sock).permit(

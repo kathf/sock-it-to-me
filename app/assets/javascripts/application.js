@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap
 
 
 
@@ -61,5 +62,4 @@ $(window).load(function () {
     $('#log-in-form').html(xhr.responseText);
     $('.nav-links').addClass("hidden");
   });
-
 })
