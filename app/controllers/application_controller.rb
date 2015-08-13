@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  layout :layout
-
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
     if current_user
@@ -32,8 +30,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # called (once) when the user logs in, insert any code your application needs
-  # to hand off from guest_user to current_user.
+  # called (once) when the user logs in, to hand off from guest_user to current_user.
   def logging_in
     guest_socks = guest_user.socks
     guest_socks.each do |sock|
@@ -47,14 +44,6 @@ class ApplicationController < ActionController::Base
     u.save!(validate: false)
     session[:guest_user_id] = u.id
     u
-  end
-
-  def layout
-    if devise_controller? && (resource.email == "")
-      false
-    elsif devise_controller?
-      "application"
-    end
   end
 
 end

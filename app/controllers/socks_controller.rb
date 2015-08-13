@@ -3,10 +3,11 @@ class SocksController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    @socks = curent_user.socks
+    @socks = current_user.socks
+    @sock = current_user.socks.new if @socks.empty?
   end
 
-  def new
+  def homepage
     @user = current_or_guest_user
     @sock = @user.socks.new
   end
@@ -18,7 +19,7 @@ class SocksController < ApplicationController
   end
 
   def create
-    @sock = Sock.create!(sock_params)
+    @sock = current_user.socks.create!(sock_params)
     if @sock.save
       redirect_to edit_sock_path(@sock)
     else

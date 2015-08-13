@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root 'socks#new'
+  root 'socks#homepage', as: '/'
 
   resources :socks do
+    get 'homepage', on: :member
     get 'work_in_progress', on: :member
   end
 

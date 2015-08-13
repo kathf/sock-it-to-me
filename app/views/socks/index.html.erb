@@ -1,24 +1,37 @@
-<!--
-<h1>Socks already in it</h1>
+<% if @socks.size > 0 %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <h2>Your socks:</h2>
+  <div class="row">
     <% @socks.each do |sock| %>
-      <tr>
-        <td><%= link_to 'Show', sock %></td>
-        <td><%= link_to 'Edit', edit_sock_path(sock) %></td>
-        <td><%= link_to 'Destroy', sock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <%= image_tag(sock.avatar_url, class: "img-thumbnail smaller-img center-block") if sock.avatar? %>
+        <div class="index-page-links">
+          <% if sock.order == nil || !sock.order.paid %>
+            <%= link_to 'Edit order', edit_sock_path(sock) %>
+            <%= link_to 'Resume order', sock_path(sock.id) %>
+            <%= link_to 'Delete order', sock, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% elsif !sock.order.delivered  %>
+            <p> You're order is on it's way </p>
+          <% elsif sock.order.closed %>
+            <p> Your order has been completed</p>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <br>
 
-<br>
+<% else %>
 
-<%= link_to 'New Sock', new_sock_path %> -->
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="height-400">
+        <div class="text-container">
+          <p> You haven't ordered any socks yet! </p>
+        </div>
+      </div>
+    </div>
+
+  <%= render 'new' %>
+
+<% end %>
