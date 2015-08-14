@@ -22,7 +22,7 @@ class SocksController < ApplicationController
 
   def create
     @sock = current_or_guest_user.socks.create!(sock_params)
-    if @sock.save
+    if @sock.persisted?
       redirect_to edit_sock_path(@sock)
     else
       render :new
