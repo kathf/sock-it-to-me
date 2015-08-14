@@ -67,7 +67,14 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-
+  config.action_mailer.smtp_settings = {
+    :user_name => '37276c17280200430',
+    :password => '88df6a8e865c07',
+    :address => 'mailtrap.io',
+    :domain => 'mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
