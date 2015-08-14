@@ -2,6 +2,8 @@ class SocksController < ApplicationController
   before_action :set_sock, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:index]
 
+  before_filter :store_location, only: [:edit, :show, :index]
+
   def index
     @socks = current_user.socks
     @sock = current_user.socks.new if @socks.empty?
@@ -19,7 +21,7 @@ class SocksController < ApplicationController
   end
 
   def create
-    @sock = current_user.socks.create!(sock_params)
+    @sock = current_or_guest_user.socks.create!(sock_params)
     if @sock.save
       redirect_to edit_sock_path(@sock)
     else
@@ -61,5 +63,11 @@ class SocksController < ApplicationController
         :avatar_cache,
         :avatar
         )
+    end
+
+    def store_location
+      if request.get? && request.format.html? && !request.xhr? &&! devise_controller?
+        session[:user_return_to] = request.fullpath
+      end
     end
 end

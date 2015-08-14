@@ -7,6 +7,7 @@ gem 'rails_12factor', group: :production
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'fog', '~> 1.32.0'
+gem "figaro"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
