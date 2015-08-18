@@ -1,8 +1,12 @@
 <div class="payment-form-container">
-  <span>   <%= number_to_currency( (@order.amount / 100) ) %> </span>
-  <%= form_for @order do |f| %>
+  <h3>Payment Form:</h3>
+  <%= form_for @order, html: {class: "well"} do |f| %>
     <%= f.hidden_field :sock_id %>
     <%= f.hidden_field :amount %>
+    <div class="field">
+        <%= label_tag :amount, "Amount" %>
+        <%= text_field_tag :amount, number_to_currency((@order.amount / 100)), readonly: true %>
+    </div>
     <div class="field">
         <%= label_tag :card_number, "Credit Card Number " %>
         <%= text_field_tag :card_number, nil, name: nil, :"data-stripe" => "number" %>
@@ -22,4 +26,12 @@
     </div>
     <div class="actions"><%= f.submit "Order" %></div>
   <% end %>
+</div>
+<div class="well alert-danger"> Test credit card details:
+  <ul>
+    <li> Number: "4242424242424242" </li>
+    <li> CVV: any 3-digits</li>
+    <li>Expiry: any future date </li>
+  </ul>
+  Please don't use your real credit card details :)
 </div>
