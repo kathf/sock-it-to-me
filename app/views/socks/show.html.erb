@@ -19,7 +19,7 @@
   <div class="col-sm-6">
     <div class="height-400">
       <% if user_signed_in? %>
-        <%= render file: 'orders/new', layout: false %>
+        <%= render 'orders/form', layout: false %>
       <% else %>
         <div class="register-or-not center-block">
           <%= link_to "Sign up", new_user_registration_path %>
