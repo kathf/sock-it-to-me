@@ -6,15 +6,7 @@
       <div class="col-sm-6 col-md-4 col-lg-3">
         <%= image_tag(sock.avatar_url, class: "img-thumbnail smaller-img center-block") if sock.avatar? %>
         <div class="index-page-links">
-          <% if sock.order == nil || !sock.order.paid %>
-            <%= link_to 'Edit order', edit_sock_path(sock.id) %>
-            <%= link_to 'Resume order', sock_path(sock.id) %>
-            <%= link_to 'Delete order', sock, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% elsif !sock.order.delivered  %>
-            <p> You're order is on it's way </p>
-          <% elsif sock.order.closed %>
-            <p> Your order has been completed</p>
-          <% end %>
+          <%= index_caption_or_links(sock) %>
         </div>
       </div>
     <% end %>

@@ -4,36 +4,32 @@ RSpec.describe SocksController, type: :controller do
   render_views
 
   describe '#homepage' do
+    before  {get :homepage}
+
     specify 'that the page loads successfully' do
-      get :homepage
       expect(response).to be_success
       expect(response).to render_template('index')
     end
 
     specify 'that a user is assigned' do
-      get :homepage
       expect(@user.id).to exist
     end
 
-  end
-
-  describe "#homepage" do
-    context "with guest user" do
-      get :homepage
-      expect(@user.email[]0..5).to eq("guest_")
-    end
+    # context "with guest user" do
+    #   expect(@user.email[0..5]).to eq("guest_")
+    # end
 
     context "with signed-in user" do
-      get :homepage
-
+      expect(@user).to be(current_user)
     end
-
-    it "assigns a new sock as @sock" do
-      expect(assigns(:sock)).to be_a_new(Sock)
-    end
-
-
   end
+
+
+
+
+  # it "assigns a new sock as @sock" do
+  #   expect(assigns(:sock)).to be_a_new(Sock)
+  # end
 
   # describe "GET #index" do
   #   it "assigns all socks as @socks" do
@@ -61,15 +57,15 @@ RSpec.describe SocksController, type: :controller do
   # end
   #
 
-  describe '#edit' do
-    let(:sock) { Sock.create!(name: ) }
-
-    specify 'that the page loads successfully' do
-      get :edit, id: person.id
-      expect(response).to be_success
-      expect(response).to render_template('edit')
-    end
-  end
+  # describe '#edit' do
+  #   let(:sock) { Sock.create!(name: ) }
+  #
+  #   specify 'that the page loads successfully' do
+  #     get :edit, id: person.id
+  #     expect(response).to be_success
+  #     expect(response).to render_template('edit')
+  #   end
+  # end
 
 
   # describe "POST #create" do
