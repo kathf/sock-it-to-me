@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   resources :socks do
     get 'homepage', on: :member
-    get 'work_in_progress', on: :member
   end
 
-  resources :orders
+  resources :orders, only: [:create, :show]
+
+
 end
