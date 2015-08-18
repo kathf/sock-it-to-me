@@ -18,13 +18,16 @@ ActiveRecord::Schema.define(version: 20150727035315) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "sock_id"
-    t.integer  "user_id"
-    t.boolean  "paid",       default: false
-    t.boolean  "delivered",  default: false
-    t.boolean  "disputed",   default: false
-    t.boolean  "closed",     default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "stripe_token"
+    t.integer  "amount"
+    t.string   "description"
+    t.string   "payment_reference"
+    t.boolean  "paid",              default: false
+    t.boolean  "delivered",         default: false
+    t.boolean  "disputed",          default: false
+    t.boolean  "closed",            default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "socks", force: :cascade do |t|

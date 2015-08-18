@@ -18,6 +18,7 @@ class SocksController < ApplicationController
   end
 
   def show
+    @order = @sock.build_order(amount: 1500)
   end
 
   def create

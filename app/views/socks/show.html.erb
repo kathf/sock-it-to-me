@@ -19,14 +19,16 @@
   <div class="col-sm-6">
     <div class="height-400">
       <% if user_signed_in? %>
-        <p>
-          show payment form
-        </p>
+        <%= render file: 'orders/new', layout: false %>
       <% else %>
-        <div class="register-or-not">
-          <%= link_to "Register to complete your sock order", work_in_progress_sock_path, class: "btn btn-default center-block"  %>
-          </br>
-          <%= link_to "Checkout without registering", work_in_progress_sock_path, class: "btn btn-default center-block"  %>
+        <div class="register-or-not center-block">
+          <%= link_to "Sign up", new_user_registration_path %>
+          or
+          <%= link_to "Log in", new_user_session_path %>
+          to complete your sock order
+        </div>
+        <div class="register-or-not center-block">
+          <%= link_to "Checkout without registering", work_in_progress_sock_path %>
         </div>
       <% end %>
     </div>

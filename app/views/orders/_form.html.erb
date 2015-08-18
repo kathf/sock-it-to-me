@@ -1,0 +1,25 @@
+<div class="payment-form-container">
+  <span>   <%= number_to_currency( (@order.amount / 100) ) %> </span>
+  <%= form_for @order do |f| %>
+    <%= f.hidden_field :sock_id %>
+    <%= f.hidden_field :amount %>
+    <div class="field">
+        <%= label_tag :card_number, "Credit Card Number " %>
+        <%= text_field_tag :card_number, nil, name: nil, "data-stripe": "number" %>
+    </div>
+    <div class="field">
+        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+        <%= text_field_tag :card_code, nil, name: nil, "data-stripe": "cvc" %>
+    </div>
+    <div class="field">
+      <%= label_tag :card_month, "Card Expiration" %>
+      <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", "data-stripe": "exp-month"} %>
+      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", "data-stripe": "exp-year"} %>
+    </div>
+    <div class="field">
+      <%= label_tag :description, "Description for your records" %>
+      <%= text_field :order, :description  %>
+    </div>
+    <div class="actions"><%= f.submit "Order" %></div>
+  <% end %>
+</div>

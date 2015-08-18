@@ -1,0 +1,10 @@
+<div class="order-show-container">
+  <h3>Payment confirmation</h3>
+  <ul>
+    <li><b> Payment reference: </b> <%= @order.payment_reference %>  </li>
+    <li><b> Amount: </b> <%= number_to_currency( (@order.amount / 100) ) %>  </li>
+    <li><b> Date: </b> <%= Time.now.strftime("%d %B %Y") %> </li>
+    <li><b> Description: </b> <%= @order.description %> </li>
+  </ul>
+  <!-- <h4>A copy of this confirmation has been emailed to you</h4> -->
+</div>
