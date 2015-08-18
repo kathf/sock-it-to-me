@@ -7,9 +7,6 @@ class CreateOrders < ActiveRecord::Migration
       t.string :description
       t.string :payment_reference
       t.boolean :paid, default: false
-      t.boolean :delivered, default: false
-      t.boolean :disputed, default: false
-      t.boolean :closed, default: false
       t.timestamps null: false
     end
   end

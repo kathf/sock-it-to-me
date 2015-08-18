@@ -18,19 +18,7 @@
 
   <div class="col-sm-6">
     <div class="height-400">
-      <% if user_signed_in? %>
-        <%= render 'orders/form', layout: false, object: @order %>
-      <% else %>
-        <div class="register-or-not center-block">
-          <%= link_to "Sign up", new_user_registration_path %>
-          or
-          <%= link_to "Log in", new_user_session_path %>
-          to complete your sock order
-        </div>
-        <div class="register-or-not center-block">
-          <%= link_to "Checkout without registering", work_in_progress_sock_path %>
-        </div>
-      <% end %>
+      <%= render 'orders/form', layout: false, object: @order %>
     </div>
   </div>
 </div>

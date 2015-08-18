@@ -15,10 +15,8 @@ module SocksHelper
   def index_caption_or_links(sock)
     if sock.order == nil || !sock.order.paid
       render partial: 'sock_order_links', locals: {sock: sock}
-    elsif !sock.order.delivered
+    elsif sock.order.paid
       "<p> You're order is on it's way </p>"
-    elsif sock.order.closed
-      "<p> Your order has been completed</p>"
     end
   end
 

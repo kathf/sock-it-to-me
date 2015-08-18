@@ -1,18 +1,19 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
-  def new
-    @order = @sock.build_order(amount: 1500)
-  end
-
   def create
     @order = Order.create(order_params)
     generate_payment_reference
     stripe_charge
+    clear_location_store
     redirect_to order_path(@order)
   end
 
   private
+
+  def clear_location_store
+    session[:user_return_to] = "/"
+  end
 
   def stripe_charge
     begin
@@ -22,6 +23,7 @@ class OrdersController < ApplicationController
         source: @order.stripe_token,
         description: @order.description
       )
+      @order.paid = true
     rescue Stripe::CardError => e
       # The card has been declined
     end
