@@ -7,7 +7,7 @@
         <%= image_tag(sock.avatar_url, class: "img-thumbnail smaller-img center-block") if sock.avatar? %>
         <div class="index-page-links">
           <% if sock.order == nil || !sock.order.paid %>
-            <%= link_to 'Edit order', edit_sock_path(sock) %>
+            <%= link_to 'Edit order', edit_sock_path(sock.id) %>
             <%= link_to 'Resume order', sock_path(sock.id) %>
             <%= link_to 'Delete order', sock, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% elsif !sock.order.delivered  %>

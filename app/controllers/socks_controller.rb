@@ -65,6 +65,7 @@ class SocksController < ApplicationController
         )
     end
 
+    # store user's location in session - to return to after sign-up / log-in
     def store_location
       if request.get? && request.format.html? && !request.xhr? &&! devise_controller?
         session[:user_return_to] = request.fullpath

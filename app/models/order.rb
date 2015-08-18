@@ -1,4 +1,4 @@
 class Order < ActiveRecord::Base
-  belongs_to :users
-  belongs_to :socks
+  belongs_to :user
+  belongs_to :sock
 end
