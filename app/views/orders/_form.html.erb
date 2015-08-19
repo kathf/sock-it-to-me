@@ -1,5 +1,6 @@
 <div class="payment-form-container">
   <h3>Payment Form:</h3>
+  <span class="payment-errors"></span>
   <%= form_for @order, html: {class: "well"} do |f| %>
     <%= f.hidden_field :sock_id %>
     <%= f.hidden_field :amount %>
@@ -9,11 +10,11 @@
     </div>
     <div class="field">
         <%= label_tag :card_number, "Credit Card Number " %>
-        <%= text_field_tag :card_number, nil, name: nil, :"data-stripe" => "number" %>
+        <%= password_field_tag :card_number, nil, name: nil, :"data-stripe" => "number" %>
     </div>
     <div class="field">
         <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-        <%= text_field_tag :card_code, nil, name: nil, :"data-stripe" => "cvc" %>
+        <%= password_field_tag :card_code, nil, name: nil, :"data-stripe" => "cvc" %>
     </div>
     <div class="field">
       <%= label_tag :card_month, "Card Expiration" %>
@@ -27,7 +28,7 @@
     <div class="actions"><%= f.submit "Order" %></div>
   <% end %>
 </div>
-<div class="well alert-danger"> Test credit card details:
+<div class="well alert-danger test-credentials">  Test credit card details
   <ul>
     <li> Number: "4242424242424242" </li>
     <li> CVV: any 3-digits</li>

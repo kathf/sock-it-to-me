@@ -12,12 +12,4 @@ module SocksHelper
     ['ankle', 'low calf', 'mid-calf', 'knee-high', 'over-the-knee']
   end
 
-  def index_caption_or_links(sock)
-    if sock.order == nil || !sock.order.paid
-      render partial: 'sock_order_links', locals: {sock: sock}
-    elsif sock.order.paid
-      "<p> You're order is on it's way </p>"
-    end
-  end
-
 end

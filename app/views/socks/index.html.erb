@@ -6,7 +6,7 @@
       <div class="col-sm-6 col-md-4 col-lg-3">
         <%= image_tag(sock.avatar_url, class: "img-thumbnail smaller-img center-block") if sock.avatar? %>
         <div class="index-page-links">
-          <%= index_caption_or_links(sock) %>
+          <%= render partial: 'sock_order_links', locals: {sock: sock} %>
         </div>
       </div>
     <% end %>

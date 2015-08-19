@@ -1,2 +1,7 @@
-<%= link_to 'Resume order', edit_sock_path(sock) %>
-<%= link_to 'Delete order', sock, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if sock.order && sock.order.paid %>
+  <p class="text-center"> You're order is on it's way </p>
+  <%= link_to 'Show order confirmation', order_path(sock.order) %>
+<% else %>
+  <%= link_to 'Resume order', edit_sock_path(sock) %>
+  <%= link_to 'Delete order', sock, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.create(order_params)
-    generate_payment_reference
     stripe_charge
     clear_location_store
     redirect_to order_path(@order)
@@ -23,14 +22,18 @@ class OrdersController < ApplicationController
         source: @order.stripe_token,
         description: @order.description
       )
-      @order.paid = true
+      payment_successful(charge) if charge.paid
     rescue Stripe::CardError => e
-      # The card has been declined
+      flash[:notice] = e.message
+    rescue => e
+      flash[:notice] = "Some other error occured"
     end
+    byebug
   end
 
-  def generate_payment_reference
-    @order.payment_reference = Time.now.to_i.to_s + rand(99).to_s
+  def payment_successful(charge)
+    @order.paid = true
+    @order.payment_reference = charge.id
     @order.save
   end
 
