@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
     rescue => e
       flash[:notice] = "Some other error occured"
     end
-    byebug
   end
 
   def payment_successful(charge)
